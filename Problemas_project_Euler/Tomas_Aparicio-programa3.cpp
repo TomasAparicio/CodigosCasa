@@ -7,8 +7,7 @@ long Fibonachi(long N);
 int main (int argc, char **argv){
     long suma = 0;
     long N = std::stol(argv[1]);
-    for (long j=1; j<=N; ++j){
-        std::cout << j << " : " << Fibonachi(j) << "\n";
+    for (long j=1; Fibonachi(j)<=N; ++j){
         if (Fibonachi(j)%2 == 1){
             suma += Fibonachi(j);
         }

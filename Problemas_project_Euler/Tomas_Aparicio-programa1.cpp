@@ -3,21 +3,18 @@
 
 
 //Declaracion
-bool isprime(long n);
+bool isprime(long long n);
 
 int main (int argc, char **argv){
-    long suma = 0;
-    long N = std::stol(argv[1]);//Asignamos el numero hasta el cual sumamos
+    long long suma = 0;
+    long long N = std::stoll(argv[1]);//Asignamos el numero hasta el cual sumamos
 
+    if (N >= 2) suma += 2; // Aseguramos incluir 2 si esta en el rango
 
-    for(long ii=2 ; ii<=N ; ++ii){
-        if (isprime(ii)==true){
+    for(long ii=3 ; ii<=N ; ii += 2){
+        if (isprime(ii)){
             //Miramos si el numero es primo, si lo sumamos al acumulado
             suma += ii;
-            if (suma < 0){ //El programa detecta cuando el valor de la suma se vuelve negativo para su trabajo
-                std::cout << "Error: Overflow, la suma de los numeros es un numero mayor al formato long";
-                return 0;
-            }
         }
     }
 
@@ -27,7 +24,7 @@ int main (int argc, char **argv){
 }
 
 
-bool isprime(long n) {
+bool isprime(long long n) {
     // precondition checks
     // do something if n <= 1
     if (n <= 1) {
@@ -43,7 +40,7 @@ bool isprime(long n) {
     }
 
     // find divisors
-    for (long ii = 2; ii <= std::sqrt(n) + 1; ii++) {
+    for (long long ii = 2; ii <= std::sqrt(n) + 1; ii++) {
         if (n%ii == 0) { // ii is divisor
             flag = false;
             break; // end, at least one divisor
